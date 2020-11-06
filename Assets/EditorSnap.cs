@@ -19,8 +19,11 @@ public class EditorSnap : MonoBehaviour
         snapPos.z = Mathf.RoundToInt(transform.position.z / (gridSize * gridSize)) * gridSize * gridSize;
 
         textMesh = GetComponentInChildren<TextMesh>();
-        textMesh.text = snapPos.x/ gridSize/ gridSize + ", " + snapPos.z / gridSize / gridSize;
+        string label = snapPos.x/ gridSize/ gridSize + ", " + snapPos.z / gridSize / gridSize;
+        textMesh.text = label;
 
         transform.position = new Vector3(snapPos.x, 0f, snapPos.z);
+        gameObject.name = label;
+        
     }
 }
