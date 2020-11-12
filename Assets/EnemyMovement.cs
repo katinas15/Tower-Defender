@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] List<Block> path;
+
     // Start is called before the first frame update
     void Start()
     {
-        foreach(Block b in path){
-            print(b.name);
-        }
+        // StartCoroutine(FollowPath());
     }
+
+    // IEnumerator FollowPath(){
+    //     print("start");
+    //     foreach(Block b in path){
+    //         transform.position = b.transform.position;
+    //         // print(b.name);
+    //         yield return new WaitForSeconds(1f);
+    //     }
+    //     print("end");
+    // }
 
     // Update is called once per frame
     void Update()

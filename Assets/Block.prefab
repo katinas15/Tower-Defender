@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 810101265058796387}
   - component: {fileID: 6061734701131400029}
   m_Layer: 0
-  m_Name: Quad (4)
+  m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 122605147371346707}
   - component: {fileID: 9145784077413809336}
   m_Layer: 0
-  m_Name: 0, 0
+  m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53350141bb3a93340b2906a853aeeeac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: 10
 --- !u!114 &9145784077413809336
 MonoBehaviour:
   m_ObjectHideFlags: 0
