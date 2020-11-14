@@ -22,13 +22,18 @@ public class EditorSnap : MonoBehaviour
         snapPos.x = Mathf.RoundToInt(transform.position.x / (gridSize * gridSize)) * gridSize * gridSize;
         snapPos.z = Mathf.RoundToInt(transform.position.z / (gridSize * gridSize)) * gridSize * gridSize;
 
-        string label = snapPos.x/gridSize/gridSize + ", " + snapPos.z/gridSize/gridSize;
         textMesh = GetComponentInChildren<TextMesh>();
        
-        textMesh.text = label;
+        if(textMesh){
+            string label = snapPos.x/gridSize/gridSize + ", " + snapPos.z/gridSize/gridSize;
+
+            textMesh.text = label;
+            gameObject.name = label;
+        }
+        
 
         transform.position = new Vector3(snapPos.x, 0f, snapPos.z);
-        gameObject.name = label;
+        
         
     }
 }

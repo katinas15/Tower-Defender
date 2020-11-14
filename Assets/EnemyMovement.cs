@@ -8,18 +8,20 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // StartCoroutine(FollowPath());
+        Pathfinder pathfinder = FindObjectOfType<Pathfinder>();
+        var path = pathfinder.GetPath();
+        StartCoroutine(FollowPath(path));
     }
 
-    // IEnumerator FollowPath(){
-    //     print("start");
-    //     foreach(Block b in path){
-    //         transform.position = b.transform.position;
-    //         // print(b.name);
-    //         yield return new WaitForSeconds(1f);
-    //     }
-    //     print("end");
-    // }
+    IEnumerator FollowPath(List<Block> path){
+        print("start");
+        foreach(Block b in path){
+            transform.position = b.transform.position;
+            // print(b.name);
+            yield return new WaitForSeconds(1f);
+        }
+        print("end");
+    }
 
     // Update is called once per frame
     void Update()

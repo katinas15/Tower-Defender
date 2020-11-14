@@ -8,7 +8,7 @@ public class Pathfinder : MonoBehaviour
     Dictionary<Vector2Int, Block> grid = new Dictionary<Vector2Int, Block>();
     Queue<Block> queue = new Queue<Block>();
     Block center;
-    public List<Block> path = new List<Block>();
+    private List<Block> path = new List<Block>();
 
     Vector2Int[] directions = {
         Vector2Int.up,
@@ -19,20 +19,35 @@ public class Pathfinder : MonoBehaviour
 
     void Start()
     {
-        start.SetTopColor(Color.blue);
-        grid.Add(start.GetGridPos(), start);
 
-        end.SetTopColor(Color.black);
-        grid.Add(end.GetGridPos(), end);
-        
-        LoadBlocks();
-        Traverse();
-        CreatePath();
         
     }
 
-    private void CreatePath(){
+    public List<Block> GetPath(){
+        if(path.Count <= 0) {
+            start.SetTopColor(Color.blue);
+            grid.Add(start.GetGridPos(), start);
+
+            end.SetTopColor(Color.black);
+            grid.Add(end.GetGridPos(), end);
+            
+            LoadBlocks();
+            Traverse();
+            CreatePath();
+        }
         
+        return path;
+    }
+
+    private void CreatePath(){
+        path.Add(end);
+        Block previous = end.exploredFrom;
+        while(previous != start){
+            path.Add(previous);
+            previous = previous.exploredFrom;
+        }
+        path.Add(start);
+        path.Reverse();
     }
 
     private void Traverse(){
