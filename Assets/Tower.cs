@@ -5,11 +5,11 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
 
-    [SerializeField] Transform targetEnemy;
+    Transform targetEnemy;
     [SerializeField] float attackRange = 10f;
     [SerializeField] ParticleSystem projectile;
 
-    Transform objectToPan;
+    [SerializeField] Transform objectToPan;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,9 +42,22 @@ public class Tower : MonoBehaviour
 
         Transform closest = enemies[0].transform;
 
-        foreach(EnemyMovement in enemies){
-            
+
+        foreach(EnemyMovement enemy in enemies){
+            float distanceA = Vector3.Distance(
+                gameObject.transform.position,
+                closest.position);
+
+            float distanceB = Vector3.Distance(
+                gameObject.transform.position,
+                enemy.transform.position);
+
+            if(distanceA < distanceB) closest = enemy.transform;
         }
 
+        targetEnemy = closest;
+
     }
+
+
 }
